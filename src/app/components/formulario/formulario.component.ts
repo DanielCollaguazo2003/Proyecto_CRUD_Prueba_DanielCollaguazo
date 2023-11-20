@@ -15,15 +15,28 @@ tarea?: Tarea;
   }
 
   form = new FormGroup({
-    identificador: new FormControl(1, []),
     nombre: new FormControl('', [Validators.required]),
-    imagen: new FormControl('', [Validators.required]),
-    ingredientes: new FormControl('', [Validators.required]),
-    preparacion: new FormControl('', [Validators.required]),
-    tipo: new FormControl('', []),
+    fecha: new FormControl('', [Validators.required]),
+    contenido: new FormControl('', [Validators.required]),
+    etiquetas: new FormControl('', [Validators.required]),
   })
 
   guardarTarea(tarea: Tarea){
+    if (this.form.invalid) {
+      alert('La informacion ingresada es incorrecta o incompleta');
+      return
+    }
+
+    //const tarea: Tarea = <Tarea>(this.form.getRawValue());
+    // receta.imagen = this.previsualizacion;
+
+    // this._recetaService.agregarReceta(receta)
+
+    // this.form.reset();
+    // this.previsualizacion = '';
+
+    // this._recetaFirebaseService.save(receta);
+
     this._tareaService.addTarea(tarea);
   }
 }
